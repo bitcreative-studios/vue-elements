@@ -1,0 +1,8 @@
+{
+  "name": "elements",
+  "version": "0.1.0",
+  "main": "index.js",
+  "repository": "git@github.com:bitwhys/vue-elements.git",
+  "author": "George Bockari <bitwhys@gmail.com>",
+  "license": "MIT"
+}
