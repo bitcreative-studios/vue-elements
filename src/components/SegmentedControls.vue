@@ -1,17 +1,23 @@
 <template>
   <div
-    class="bg-white border-2 shadow-md border-gray-400 rounded max-w-3xl mx-auto p-8 transition-all duration-200"
+    class="bg-white border-2 shadow-md border-gray-400
+      rounded max-w-3xl mx-auto p-8 transition-all duration-200"
   >
     <div
       v-if="!isMobile"
       class="controls inline-block
         border-4 max-w-full  rounded-lg border-blue-500"
     >
-      <button v-for="(option, i) in options" :key="i">
-        Sort by{{ option }}
+      <button
+        v-for="(option, i) in options"
+        :key="i"
+        @click="active = option"
+        :class="{ active: option === active }"
+      >
+        Sort by {{ option }}
       </button>
     </div>
-    <select name="" id="sort" v-else>
+    <select name="" id="sort" v-else v-model="active">
       <option v-for="(option, i) in options" :value="option" :key="i">
         Sort by {{ option }}
       </option>
@@ -68,11 +74,11 @@ button + button {
   @apply border-l-4 border-blue-500;
 }
 
-button:hover {
+button:hover:not(.active) {
   @apply bg-blue-100;
 }
-button:focus,
-button:active {
+
+.active {
   @apply shadow-outline bg-blue-500 text-white outline-none;
 }
 
